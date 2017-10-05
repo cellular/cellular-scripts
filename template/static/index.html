@@ -1,0 +1,44 @@
+<%
+const {
+  files: { chunks },
+  options: { env }
+} = htmlWebpackPlugin;
+%>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CELLULAR</title>
+  <!-- ☉ CELLULAR https:://www.cellular.de -->
+
+  <link rel="shortcut icon" type="image/x-icon" title="" href="/favicon.ico" />
+
+  <style type="text/css">
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+      font-size: 14px;
+    }
+  </style>
+  <% if (env.RAVEN) { %>
+    <script src="https://cdn.ravenjs.com/3.17.0/raven.min.js"></script>
+    <script>
+        Raven.config('<%= env.RAVEN %>', {
+          release: '<%= env.RELEASE %>',
+          environment: '<%= env.APPLICATION_ENV %>'
+        }).install()
+    </script>
+  <% } %>
+</head>
+<body>
+  <div id="root"></div>
+  <% for (var chunk in chunks) { %>
+  <script src="<%= chunks[chunk].entry %>"></script>
+  <% } %>
+</body>
+</html>
