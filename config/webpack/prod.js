@@ -26,7 +26,7 @@ module.exports = {
     // We don't currently advertise code splitting but Webpack supports it.
     filename: 'assets/[name].[chunkhash:8].js',
     chunkFilename: 'assets/[name].[chunkhash:8].chunk.js',
-    publicPath: '/',
+    publicPath: app.rootUrl,
     // Point sourcemap entries to original disk location (format as URL on Windows)
     devtoolModuleFilenameTemplate: info =>
       path.relative(app.src, info.absoluteResourcePath).replace(/\\/g, '/')
