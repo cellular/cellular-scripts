@@ -34,7 +34,7 @@ module.exports = function({ prod = false }) {
       // for React Native Web.
       extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx'],
       alias: {
-        // Resolve Babel runtime relative to react-scripts.
+        // Resolve Babel runtime relative to cellular-scripts.
         // It usually still works on npm 3 without this but it would be
         // unfortunate to rely on, as cellular-scripts could be symlinked.
         'babel-runtime': path.dirname(

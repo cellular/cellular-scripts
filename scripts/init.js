@@ -16,13 +16,13 @@ module.exports = function(
 
   // Setup the script rules
   appPackage.scripts = {
-    start: 'react-scripts start',
-    build: 'react-scripts build',
-    serve: 'react-scripts serve',
-    lint: 'react-scripts lint',
-    test: 'react-scripts test',
-    precommit: 'react-scripts precommit',
-    postmerge: 'react-scripts postmerge'
+    start: 'cellular-scripts start',
+    build: 'cellular-scripts build',
+    serve: 'cellular-scripts serve',
+    lint: 'cellular-scripts lint',
+    test: 'cellular-scripts test',
+    precommit: 'cellular-scripts precommit',
+    postmerge: 'cellular-scripts postmerge'
   };
 
   fs.writeFileSync(
