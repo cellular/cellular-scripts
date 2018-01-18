@@ -8,8 +8,8 @@ process.on('unhandledRejection', err => {
 });
 
 const [name, ...args] = process.argv.slice(2);
-
 let script;
+
 try {
   script = require(`../scripts/${name}`);
 } catch (err) {
@@ -17,6 +17,11 @@ try {
   process.exit(1);
 }
 
-Promise.resolve(script(...args)).then(exitCode => {
-  process.exitCode = exitCode || 0;
-});
+Promise.resolve(script(...args))
+  .then(result => {
+    if (typeof result == 'number') process.exitCode = result;
+  })
+  .catch(err => {
+    console.log(err);
+    process.exit(1);
+  });

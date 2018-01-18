@@ -1,6 +1,6 @@
 {
   "extends": ["./eslint.js"],
   "env": {
-      "node": true
+    "node": true
   }
 }

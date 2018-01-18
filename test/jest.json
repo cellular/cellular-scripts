@@ -1,0 +1,7 @@
+{
+    "rootDir": ".",
+    "testMatch": [
+      "<rootDir>/*.js"
+    ]
+  }
+  

@@ -1,4 +1,7 @@
-module.exports = function() {
-  const eslint = require('eslint/lib/cli');
-  return eslint.execute(process.argv.slice(0, 2).concat('--fix', 'src'));
+// @flow
+
+const lint = require('./lint');
+
+module.exports = function(...args /*: string[] */) {
+  return lint('--fix', ...args);
 };

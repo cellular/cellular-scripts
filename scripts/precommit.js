@@ -1,4 +1,6 @@
-const lintStaged = require('lint-staged/src');
+// @flow
+
+const spawn = require('../lib/spawn');
 const { hasPkgProp, hasFile } = require('../lib/app');
 
 module.exports = function() {
@@ -7,6 +9,6 @@ module.exports = function() {
     !hasFile('lint-staged.config.js') &&
     !hasPkgProp('lint-staged');
 
-  const config = require.resolve('../config/lintstagedrc');
-  lintStaged(console, useBuiltinConfig && config);
+  const args = useBuiltinConfig ? [require.resolve('../lintstaged')] : [];
+  return spawn('lint-staged', args);
 };
