@@ -1,4 +1,6 @@
-const { customize, hasFile, hasPkgProp, src } = require('../../lib/app');
+// @flow
+
+const { hasFile, hasPkgProp, src } = require('../lib/app');
 
 const useBuiltInBabelConfig = !hasFile('.babelrc') && !hasPkgProp('babel');
 
@@ -17,6 +19,11 @@ const config = {
   testPathIgnorePatterns: [...ignores],
   coveragePathIgnorePatterns: [...ignores],
   transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$'],
+  transform: useBuiltInBabelConfig
+    ? {
+        '^.+\\.js$': require.resolve('./babelTransform')
+      }
+    : {},
   coverageThreshold: {
     global: {
       branches: 100,
@@ -27,10 +34,4 @@ const config = {
   }
 };
 
-if (useBuiltInBabelConfig) {
-  config.transform = {
-    '^.+\\.js$': require.resolve('./babelTransform')
-  };
-}
-
-module.exports = customize('jest', config);
+module.exports = config;

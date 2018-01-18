@@ -1,6 +1,8 @@
+// @flow
+
 const { hasPkgProp, hasFile } = require('../lib/app');
 
-module.exports = function(...args) {
+module.exports = function(...args /*: string[] */) {
   process.env.BABEL_ENV = 'test';
   process.env.NODE_ENV = 'test';
 
@@ -14,7 +16,7 @@ module.exports = function(...args) {
       : [];
 
   // Populate the require cache to allow cellular-scripts to be used as jest preset
-  const jestConfig = require('../config/jest');
+  const jestConfig = require('../jest');
   const jestPreset = require.resolve('../jest-preset.json');
   require.cache[jestPreset] = { exports: jestConfig };
 

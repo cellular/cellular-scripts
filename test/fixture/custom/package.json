@@ -1,0 +1,8 @@
+{
+    "name": "cellular-scripts-test-custom",
+    "version": "0.0.0",
+    "private": true,
+    "dependencies": {
+        "react": "^16.2.0"
+    }
+}

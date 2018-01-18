@@ -1,0 +1,7 @@
+flow-typed/
+node_modules/
+coverage/
+dist/
+build/
+public/
+.next/

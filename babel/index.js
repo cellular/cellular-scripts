@@ -1,4 +1,6 @@
-const { customize, hasDep, hasDevDep } = require('../lib/app');
+// @flow
+
+const { hasDep, hasDevDep } = require('../lib/app');
 
 const isTest = (process.env.BABEL_ENV || process.env.NODE_ENV) === 'test';
 const isWebpack = !isTest;
@@ -24,7 +26,7 @@ const plugins = [
   !isWebpack && require.resolve('babel-plugin-dynamic-import-node')
 ].filter(Boolean);
 
-module.exports = customize('babel', {
+module.exports = {
   presets,
   plugins
-});
+};

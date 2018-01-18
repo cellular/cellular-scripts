@@ -1,4 +1,6 @@
-const cellularScripts = require.resolve('../bin/cellular-scripts');
+// @flow
+
+const cellularScripts = require.resolve('./bin/cellular-scripts');
 
 module.exports = {
   linters: {
