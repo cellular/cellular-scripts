@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/fgnass/cellular-scripts.svg?branch=master)](https://travis-ci.org/fgnass/cellular-scripts)
+[![Greenkeeper badge](https://badges.greenkeeper.io/fgnass/cellular-scripts.svg)](https://greenkeeper.io/)
 
 This is a drop-in replacement for react-scripts that allows you to optionally provide custom configurations for webpack, Babel, ESLint, lint-staged and Jest.
 
