@@ -4,6 +4,8 @@ This is a drop-in replacement for react-scripts that allows you to optionally pr
 
 # Setup
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/fgnass/cellular-scripts.svg)](https://greenkeeper.io/)
+
 ## Quickstart
 
 You can bootstrap new projects via [create-react-app](https://github.com/facebookincubator/create-react-app):
