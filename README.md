@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/fgnass/cellular-scripts.svg?branch=master)](https://travis-ci.org/fgnass/cellular-scripts)
 [![Greenkeeper badge](https://badges.greenkeeper.io/fgnass/cellular-scripts.svg)](https://greenkeeper.io/)
 
-This is a drop-in replacement for react-scripts that allows you to optionally provide custom configurations for webpack, Babel, ESLint, lint-staged and Jest.
+This is a drop-in replacement for react-scripts that allows you to optionally provide custom configurations for webpack, Babel, ESLint, prettier, lint-staged and Jest.
 
 # Setup
 
@@ -34,6 +34,8 @@ For existing projects run `npm i -D cellular-scripts`, remove all the devDepende
 ```
 
 __Note__: The `precommit` and `postmerge` npm-scripts are Git-hooks that will be run by [husky](https://github.com/typicode/husky).
+
+Modify your [webpack](#webpack), [Babel](#babel) and [ESLint](#eslint) config files to extend the settings that come with `cellular-scripts` or remove your config files altogether if the defaults work for your project.
 
 # CLI
 
@@ -158,6 +160,18 @@ module.exports = {
 
 __NOTE:__ The default config won't work if `cellular-scripts` are npm-linked or installed with an older npm version that doesn't flatten the dependency tree. See this [GitHub issue](https://github.com/eslint/eslint/issues/3458) for details.
 
+## Prettier
+
+You can override the default configuration by placing a `.prettierrc` or `.prettier.config.js` file in your project's root or by adding a `prettier` property to `package.json`.
+
+The default configuration is:
+
+```json
+{ 
+    "singleQuote": true,
+    "trailingComma": "es5"
+}
+```
 
 ## lint-staged
 

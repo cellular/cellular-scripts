@@ -1,7 +1,13 @@
 // @flow
 
-const { hasDep, hasDevDep, pkg } = require('./lib/app');
-const prettierrc = require('./prettier');
+const { hasFile, hasDep, hasDevDep, hasPkgProp, pkg } = require('./lib/app');
+
+const useBuiltinPrettier =
+  !hasFile('.prettierrc') &&
+  !hasFile('.prettier.config.js') &&
+  !hasPkgProp('prettier');
+
+const prettierConfig = useBuiltinPrettier ? require('./prettier') : null;
 
 const flow = hasDevDep('flow-bin');
 const react = hasDep('react', 'preact');
@@ -34,7 +40,7 @@ if (react && flow) {
 }
 
 const rules = {
-  'prettier/prettier': ['error', prettierrc],
+  'prettier/prettier': ['error', prettierConfig],
   'no-console': 0,
   'no-debugger': 0,
   'react/prop-types': 0, // disable until 7.4.0 is released
