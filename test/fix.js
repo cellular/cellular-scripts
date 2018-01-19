@@ -8,7 +8,7 @@ test('build', () => {
   const fixable = path.join(appPath, 'src', 'fixable.js');
   fs.outputFileSync(fixable, ' console.log( "hello world" )');
   process.chdir(appPath);
-  const result = spawn.sync(bin, ['fix']);
+  const result = spawn.sync(bin, ['lint', '--fix']);
   expect(result.status).toEqual(0);
   const fixed = fs.readFileSync(fixable, 'utf8');
   fs.removeSync(fixable);

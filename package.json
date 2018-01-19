@@ -7,7 +7,8 @@
     "test": "jest -c test/jest.json"
   },
   "bin": {
-    "cellular-scripts": "./bin/cellular-scripts.js"
+    "cellular-scripts": "./bin/cellular-scripts.js",
+    "cs": "./bin/cellular-scripts.js"
   },
   "keywords": [],
   "author": "",

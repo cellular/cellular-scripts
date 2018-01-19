@@ -16,7 +16,7 @@ test('init', () => {
     dependencies: {}
   });
   spawn.sync(bin, ['init', appPath, appName]);
-  expect(require(pkgPath).scripts.start).toEqual('cellular-scripts start');
+  expect(require(pkgPath).scripts.start).toEqual('cs start');
   expect(fs.existsSync(path.join(appPath, 'README.md'))).toBeTruthy();
   fs.removeSync(appPath);
 });

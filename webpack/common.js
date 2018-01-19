@@ -20,7 +20,7 @@ module.exports = function(env /*: any */) {
     },
     resolve: {
       modules: ['node_modules', path.resolve(__dirname, '..', 'node_modules')],
-      extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx'],
+      extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx', '.mjs'],
       alias: {
         // Resolve Babel runtime relative to cellular-scripts.
         // It usually still works on npm 3 without this but it would be

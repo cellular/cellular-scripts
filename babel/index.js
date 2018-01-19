@@ -2,13 +2,19 @@
 
 const { hasDep, hasDevDep } = require('../lib/app');
 
-const isTest = (process.env.BABEL_ENV || process.env.NODE_ENV) === 'test';
-const isWebpack = !isTest;
+const isNode = (process.env.BABEL_ENV || process.env.NODE_ENV) === 'test';
 
-const envModules = isWebpack ? { modules: false } : {};
-const envTargets = isTest ? { node: 'current' } : { browsers: ['> 2%'] };
+const webpackOpts = {
+  modules: false
+};
 
-const envOptions = Object.assign({}, envModules, { targets: envTargets });
+const nodeOpts = {
+  targets: {
+    node: 'current'
+  }
+};
+
+const envOptions = isNode ? nodeOpts : webpackOpts;
 
 const presets = [
   [require.resolve('babel-preset-env'), envOptions],
@@ -23,7 +29,7 @@ const plugins = [
   require.resolve('babel-plugin-transform-object-rest-spread'),
   require.resolve('babel-plugin-minify-dead-code-elimination'),
   hasDep('glamorous') && require.resolve('babel-plugin-glamorous-displayname'),
-  !isWebpack && require.resolve('babel-plugin-dynamic-import-node')
+  isNode && require.resolve('babel-plugin-dynamic-import-node')
 ].filter(Boolean);
 
 module.exports = {

@@ -10,14 +10,14 @@ module.exports = function(appPath, appName, verbose, originalDirectory) {
 
   // Setup the script rules
   appPackage.scripts = {
-    start: 'cellular-scripts start',
-    build: 'cellular-scripts build',
-    serve: 'cellular-scripts serve',
-    lint: 'cellular-scripts lint',
-    test: 'cellular-scripts test',
-    fix: 'cellular-scripts fix',
-    precommit: 'cellular-scripts precommit',
-    postmerge: 'cellular-scripts postmerge'
+    start: 'cs start',
+    build: 'cs build',
+    serve: 'cs serve',
+    lint: 'cs lint',
+    test: 'cs test',
+    fix: 'cs fix',
+    precommit: 'cs precommit',
+    postmerge: 'cs postmerge'
   };
 
   fs.writeFileSync(
