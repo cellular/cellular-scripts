@@ -40,14 +40,20 @@ __Note__: The `precommit` and `postmerge` npm-scripts are Git-hooks that will be
 The `cellular-scripts` package provides a binary called `cs` that takes the name of a script as first argument:
 
 * `cs start [options]`
-  Starts a development server. Options are passed to the [webpack-dev-server CLI](https://webpack.js.org/configuration/dev-server/).
-* `cs build [options]` Creates a production build using the built-in [defaults](#webpack). Refer to the webpack docs for a list of [available options](https://webpack.js.org/api/cli/).
-* `cs serve` Serves a previously built production version.
+  Starts a development server. Options are passed to [webpack-dev-server](https://webpack.js.org/configuration/dev-server/).
+* `cs build [options]` Creates a production build. Options are passed to [webpack](https://webpack.js.org/api/cli/).
+* `cs serve` Serves a previously built production version. Same options as `start`.
 * `cs test [options]` Runs the test. Options are passed on to [Jest](https://facebook.github.io/jest/docs/en/cli.html)
-* `cs lint [options]`
-  Runs [eslint](#eslint). Refer to the official docs for a list of [available options](https://eslint.org/docs/user-guide/command-line-interface).
+* `cs lint [options]` Runs the linter. Options are passed to [ESLint](https://eslint.org/docs/user-guide/command-line-interface).
 * `cs precommit` Runs [lint-staged](#lint-staged).
 * `cs postmerge` Runs [install-deps-postmerge](https://github.com/camacho/install-deps-postmerge).
+
+When run via npm use `--` to pass options on to the script:
+
+```
+npm start -- --port 8080 --open
+```
+
 
 # Configuration
 
@@ -109,18 +115,18 @@ Both values can be overwritten by setting environment variables.
 ### Default Babel Configuration
 
 Presets:
-* babel-preset-env
-* babel-preset-flow (if project has flow-bin as dependency)
-* babel-preset-react (if project as react or preact as dependency)
+* [babel-preset-env](https://www.npmjs.com/package/babel-preset-env)
+* [babel-preset-flow](https://www.npmjs.com/package/babel-preset-flow) (if project has flow-bin as dependency)
+* [babel-preset-react](https://www.npmjs.com/package/babel-preset-react) (if project as react or preact as dependency)
 
 Plugins:
-* babel-plugin-syntax-dynamic-import
-* babel-plugin-transform-decorators-legacy
-* babel-plugin-transform-class-properties
-* babel-plugin-transform-object-rest-spread
-* babel-plugin-minify-dead-code-elimination
-* babel-plugin-dynamic-import-node (when tests are run)
-* babel-plugin-glamorous-displayname (if project has glamorous as dependency)
+* [babel-plugin-syntax-dynamic-import](https://www.npmjs.com/package/babel-plugin-syntax-dynamic-import)
+* [babel-plugin-transform-decorators-legacy](https://www.npmjs.com/package/babel-plugin-transform-decorators-legacy)
+* [babel-plugin-transform-class-properties](https://www.npmjs.com/package/babel-plugin-transform-class-properties)
+* [babel-plugin-transform-object-rest-spread](https://www.npmjs.com/package/babel-plugin-transform-object-rest-spread)
+* [babel-plugin-minify-dead-code-elimination](https://www.npmjs.com/package/babel-plugin-minify-dead-code-elimination)
+* [babel-plugin-dynamic-import-node](https://www.npmjs.com/package/babel-plugin-dynamic-import-node) (when tests are run)
+* [babel-plugin-glamorous-displayname](https://www.npmjs.com/package/babel-plugin-glamorous-displayname) (if project has glamorous as dependency)
 
 __NOTE:__ Files under `node_modules` are run through Babel too, but with a much simpler configuration that only applies `babel-preset-env`.
 
