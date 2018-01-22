@@ -20,7 +20,7 @@ const presets = [
   react && 'plugin:react/recommended',
   'prettier',
   flow && 'prettier/flowtype',
-  react && 'prettier/react'
+  react && 'prettier/react',
 ].filter(Boolean);
 
 const plugins = [
@@ -28,14 +28,14 @@ const plugins = [
   'filenames',
   flow && 'flowtype',
   react && 'react',
-  'prettier'
+  'prettier',
 ].filter(Boolean);
 
 const settings = {};
 
 if (react && flow) {
   settings.react = {
-    flowVersion: pkg.devDependencies['flow-bin']
+    flowVersion: pkg.devDependencies['flow-bin'],
   };
 }
 
@@ -46,7 +46,7 @@ const rules = {
   'react/prop-types': 0, // disable until 7.4.0 is released
   'react/jsx-no-target-blank': 0,
   'react/no-unescaped-entities': 0,
-  'filenames/match-exported': 2
+  'filenames/match-exported': 2,
   // "import/order": ["error", {"newlines-between": "always"}]
 };
 
@@ -54,17 +54,17 @@ module.exports = {
   extends: presets,
   parser: 'babel-eslint',
   parserOptions: {
-    sourceType: 'module'
+    sourceType: 'module',
   },
   env: {
     browser: true,
     es6: true,
-    jest: true
+    jest: true,
   },
   globals: {
-    process: true
+    process: true,
   },
   plugins,
   settings,
-  rules
+  rules,
 };

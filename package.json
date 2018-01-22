@@ -1,17 +1,20 @@
 {
   "name": "cellular-scripts",
   "version": "1.1.0",
-  "description": "",
+  "description": "CLI toolbox for React projects",
   "main": "index.js",
   "scripts": {
-    "test": "jest -c test/jest.json"
+    "test": "jest -c test/jest.json",
+    "lint": "eslint ."
   },
   "bin": {
     "cellular-scripts": "./bin/cellular-scripts.js",
     "cs": "./bin/cellular-scripts.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "webpack", "zeroconf", "create-react-app", "react-scripts"
+  ],
+  "author": "Felix Gnass <fgnass@cellular.de>",
   "license": "MIT",
   "dependencies": {
     "arrify": "^1.0.1",

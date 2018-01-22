@@ -13,7 +13,7 @@ test('init', () => {
   fs.writeJsonSync(pkgPath, {
     name: appName,
     version: '0.0.0',
-    dependencies: {}
+    dependencies: {},
   });
   spawn.sync(bin, ['init', appPath, appName]);
   expect(require(pkgPath).scripts.start).toEqual('cs start');

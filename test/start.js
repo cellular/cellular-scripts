@@ -14,7 +14,7 @@ test(
       return new Promise((resolve, reject) => {
         const child = spawn(bin, ['start', '--port', port], {
           stdio: ['pipe', 'pipe', 'pipe', 'ipc'],
-          detached: true
+          detached: true,
         });
         child.on('error', reject);
         child.stdout.once('data', () => {

@@ -8,7 +8,7 @@ const ignores = [
   '/node_modules/',
   '/fixtures/',
   '/__tests__/helpers/',
-  '__mocks__'
+  '__mocks__',
 ];
 
 const config = {
@@ -21,7 +21,7 @@ const config = {
   transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$'],
   transform: useBuiltInBabelConfig
     ? {
-        '^.+\\.js$': require.resolve('./babelTransform')
+        '^.+\\.js$': require.resolve('./babelTransform'),
       }
     : {},
   coverageThreshold: {
@@ -29,9 +29,9 @@ const config = {
       branches: 100,
       functions: 100,
       lines: 100,
-      statements: 100
-    }
-  }
+      statements: 100,
+    },
+  },
 };
 
 module.exports = config;

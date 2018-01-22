@@ -18,19 +18,19 @@ module.exports = function(env /*: Object */) {
       filename: 'assets/bundle.js',
       chunkFilename: 'assets/[name].chunk.js',
       devtoolModuleFilenameTemplate: info =>
-        path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')
+        path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
     }),
     plugins: [
       ...common.plugins,
       // Add module names to factory functions so they appear in browser profiler.
-      new webpack.NamedModulesPlugin()
+      new webpack.NamedModulesPlugin(),
     ],
     // Turn off performance hints during development because we don't do any
     // splitting or minification in interest of speed. These warnings become
     // cumbersome.
     performance: {
-      hints: false
+      hints: false,
     },
-    devServer
+    devServer,
   });
 };

@@ -9,6 +9,6 @@ const stage = 'git add';
 
 module.exports = {
   linters: {
-    '**/*.+(js|mjs|json)': [fix, flow, stage].filter(Boolean)
-  }
+    '**/*.+(js|mjs|json)': [fix, flow, stage].filter(Boolean),
+  },
 };

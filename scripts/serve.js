@@ -11,7 +11,7 @@ module.exports = function(...args /*: string[] */) {
   return spawn('webpack-dev-server', cliArgs, {
     env: Object.assign({}, process.env, {
       BABEL_ENV: 'production',
-      NODE_ENV: 'production'
-    })
+      NODE_ENV: 'production',
+    }),
   });
 };

@@ -26,7 +26,7 @@ module.exports = (env /*: any */) => {
       filename: 'assets/[name].[chunkhash:8].js',
       chunkFilename: 'assets/[name].[chunkhash:8].chunk.js',
       devtoolModuleFilenameTemplate: info =>
-        path.relative(app.src, info.absoluteResourcePath).replace(/\\/g, '/')
+        path.relative(app.src, info.absoluteResourcePath).replace(/\\/g, '/'),
     }),
     plugins: [
       ...common.plugins,
@@ -40,26 +40,26 @@ module.exports = (env /*: any */) => {
           // https://github.com/facebookincubator/create-react-app/issues/2376
           // Pending further investigation:
           // https://github.com/mishoo/UglifyJS2/issues/2011
-          comparisons: false
+          comparisons: false,
         },
         output: {
           comments: false,
           // Turned on because emoji and regex is not minified properly using default
           // https://github.com/facebookincubator/create-react-app/issues/2488
-          ascii_only: true
+          ascii_only: true,
         },
-        sourceMap: shouldUseSourceMap
+        sourceMap: shouldUseSourceMap,
       }),
       // Generate a manifest file which contains a mapping of all asset filenames
       // to their corresponding output file so that tools can pick it up without
       // having to parse `index.html`.
       new ManifestPlugin({
-        fileName: 'asset-manifest.json'
-      })
+        fileName: 'asset-manifest.json',
+      }),
     ],
     devServer: Object.assign({}, devServer, {
       contentBase: app.dist,
-      hot: false
-    })
+      hot: false,
+    }),
   });
 };

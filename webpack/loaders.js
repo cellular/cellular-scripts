@@ -17,10 +17,10 @@ exports.babel = {
         cacheDirectory: true,
         highlightCode: true,
         babelrc: hasBabelConfig,
-        presets: hasBabelConfig ? [] : [require.resolve('../babel')]
-      }
-    }
-  ]
+        presets: hasBabelConfig ? [] : [require.resolve('../babel')],
+      },
+    },
+  ],
 };
 
 // Process any JS outside of the app with Babel.
@@ -37,10 +37,10 @@ exports.deps = {
         babelrc: false,
         compact: false,
         presets: [require.resolve('../babel/deps')],
-        cacheDirectory: true
-      }
-    }
-  ]
+        cacheDirectory: true,
+      },
+    },
+  ],
 };
 
 // "file" loader makes sure those assets get served by WebpackDevServer.
@@ -56,6 +56,6 @@ exports.file = {
   exclude: [/\.js$/, /\.html$/, /\.json$/],
   loader: require.resolve('file-loader'),
   options: {
-    name: 'assets/[name].[hash:8].[ext]'
-  }
+    name: 'assets/[name].[hash:8].[ext]',
+  },
 };

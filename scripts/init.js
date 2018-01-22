@@ -17,7 +17,7 @@ module.exports = function(appPath, appName, verbose, originalDirectory) {
     test: 'cs test',
     fix: 'cs fix',
     precommit: 'cs precommit',
-    postmerge: 'cs postmerge'
+    postmerge: 'cs postmerge',
   };
 
   fs.writeFileSync(

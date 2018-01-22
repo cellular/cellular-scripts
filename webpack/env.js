@@ -22,7 +22,7 @@ function resolveEnv(value /*: any */, name /*: string */) {
 function processEnv(rawEnv /*: Object */) {
   const env = Object.assign(
     {
-      GIT_REV: app.revision
+      GIT_REV: app.revision,
     },
     rawEnv
   );
@@ -37,13 +37,13 @@ function processEnv(rawEnv /*: Object */) {
       'process.env': _.mapValues(env, (v, k) => {
         if (v && v[EXPRESSION]) return v[EXPRESSION];
         return JSON.stringify(resolveEnv(v, k));
-      })
-    }
+      }),
+    },
   };
 }
 
 module.exports = {
   resolveEnv,
   processEnv,
-  expression
+  expression,
 };

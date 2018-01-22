@@ -16,7 +16,7 @@ module.exports = function(env /*: any */) {
     entry: [app.src],
     output: {
       path: app.dist,
-      publicPath: '/'
+      publicPath: '/',
     },
     resolve: {
       modules: ['node_modules', path.resolve(__dirname, '..', 'node_modules')],
@@ -29,20 +29,20 @@ module.exports = function(env /*: any */) {
           require.resolve('babel-runtime/package.json')
         ),
         // Support React Native Web
-        'react-native': 'react-native-web'
-      }
+        'react-native': 'react-native-web',
+      },
     },
     module: {
       strictExportPresence: true,
       rules: [
         {
           // Disable require.ensure as it's not a standard language feature.
-          parser: { requireEnsure: false }
+          parser: { requireEnsure: false },
         },
         {
-          oneOf: [loaders.babel, loaders.deps, loaders.file]
-        }
-      ]
+          oneOf: [loaders.babel, loaders.deps, loaders.file],
+        },
+      ],
     },
 
     plugins: [
@@ -64,9 +64,9 @@ module.exports = function(env /*: any */) {
           removeStyleLinkTypeAttributes: true,
           minifyJS: true,
           minifyCSS: true,
-          minifyURLs: true
-        }
-      })
+          minifyURLs: true,
+        },
+      }),
     ],
 
     // Some libraries import Node modules but don't use them in the browser.
@@ -76,7 +76,7 @@ module.exports = function(env /*: any */) {
       fs: 'empty',
       net: 'empty',
       tls: 'empty',
-      child_process: 'empty'
-    }
+      child_process: 'empty',
+    },
   };
 };
