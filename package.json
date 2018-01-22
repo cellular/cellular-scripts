@@ -1,6 +1,6 @@
 {
   "name": "cellular-scripts",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "CLI toolbox for React projects",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,10 @@
     "cs": "./bin/cellular-scripts.js"
   },
   "keywords": [
-    "webpack", "zeroconf", "create-react-app", "react-scripts"
+    "webpack",
+    "zeroconf",
+    "create-react-app",
+    "react-scripts"
   ],
   "author": "Felix Gnass <fgnass@cellular.de>",
   "license": "MIT",
