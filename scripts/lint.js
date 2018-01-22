@@ -15,12 +15,25 @@ module.exports = function(...args /*: string[] */) {
     : [];
 
   const useBuiltinIgnore =
-    !args.includes('--ignore-path') &&
+    !args.includes('--ignore-pattern') &&
     !hasFile('.eslintignore') &&
     !hasPkgProp('eslintIgnore');
 
   const ignore = useBuiltinIgnore
-    ? ['--ignore-path', require.resolve('../eslintignore')]
+    ? [
+        '--ignore-pattern',
+        'node_modules',
+        '--ignore-pattern',
+        'public',
+        '--ignore-pattern',
+        'dist',
+        '--ignore-pattern',
+        'flow-typed',
+        '--ignore-pattern',
+        'coverage',
+        '--ignore-pattern',
+        '.next',
+      ]
     : [];
 
   const filesGiven = args.some(arg => arg.includes('.js'));
