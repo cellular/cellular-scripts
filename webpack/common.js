@@ -7,8 +7,10 @@ const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 const app = require('../lib/app');
 const { processEnv } = require('./env');
-
+const { fileContains } = require('../lib/util');
 const loaders = require('./loaders');
+
+const template = `${app.static}/index.html`;
 
 module.exports = function(env /*: any */) {
   const { vars, define } = processEnv(env);
@@ -53,8 +55,8 @@ module.exports = function(env /*: any */) {
 
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin({
-        inject: false,
-        template: `${app.static}/index.html`,
+        template,
+        inject: !fileContains(template, /<%=.*\.entry/),
         env: vars,
         minify: {
           collapseWhitespace: true,
