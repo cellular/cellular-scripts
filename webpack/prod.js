@@ -4,6 +4,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const app = require('../lib/app');
 const devServer = require('./devServer');
@@ -29,6 +30,9 @@ module.exports = (env /*: any */) => {
         path.relative(app.src, info.absoluteResourcePath).replace(/\\/g, '/'),
     }),
     plugins: [
+      new CleanWebpackPlugin([app.dist], {
+        root: app.root,
+      }),
       ...common.plugins,
       new CopyWebpackPlugin([{ from: app.static }]),
       new webpack.optimize.ModuleConcatenationPlugin(),
