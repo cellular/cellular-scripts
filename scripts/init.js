@@ -15,7 +15,6 @@ module.exports = function(appPath, appName, verbose, originalDirectory) {
     serve: 'cs serve',
     lint: 'cs lint',
     test: 'cs test',
-    fix: 'cs fix',
     precommit: 'cs precommit',
     postmerge: 'cs postmerge',
   };
