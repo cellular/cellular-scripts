@@ -24,7 +24,7 @@ module.exports = (env /*: any */) => {
     // You can exclude the *.map files from the build during deployment.
     devtool: shouldUseSourceMap ? 'source-map' : false,
     output: Object.assign({}, common.output, {
-      filename: 'assets/[name].[chunkhash:8].js',
+      filename: app.main || 'assets/[name].[chunkhash:8].js',
       chunkFilename: 'assets/[name].[chunkhash:8].chunk.js',
       devtoolModuleFilenameTemplate: info =>
         path.relative(app.src, info.absoluteResourcePath).replace(/\\/g, '/'),
