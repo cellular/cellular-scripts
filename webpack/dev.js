@@ -8,7 +8,7 @@ const devServer = require('./devServer');
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
 // The production configuration is different and lives in a separate file.
-module.exports = function(env /*: Object */) {
+module.exports = function(env /*: ?Object */) {
   const common = require('./common')(env);
   return Object.assign({}, common, {
     devtool: 'cheap-module-source-map',

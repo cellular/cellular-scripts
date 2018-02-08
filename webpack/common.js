@@ -12,7 +12,7 @@ const loaders = require('./loaders');
 
 const template = `${app.static}/index.html`;
 
-module.exports = function(env /*: any */) {
+module.exports = function(env /*: ?Object */) {
   const { vars, define } = processEnv(env);
   return {
     entry: [app.src],

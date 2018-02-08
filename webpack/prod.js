@@ -15,7 +15,7 @@ const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 // This is the production configuration.
 // It compiles slowly and is focused on producing a fast and minimal bundle.
 // The development configuration is different and lives in a separate file.
-module.exports = (env /*: any */) => {
+module.exports = (env /*: ?Object */) => {
   const common = require('./common')(env);
   return Object.assign({}, common, {
     // Don't attempt to continue if there are any errors.
@@ -24,7 +24,7 @@ module.exports = (env /*: any */) => {
     // You can exclude the *.map files from the build during deployment.
     devtool: shouldUseSourceMap ? 'source-map' : false,
     output: Object.assign({}, common.output, {
-      filename: app.main || 'assets/[name].[chunkhash:8].js',
+      filename: 'assets/[name].[chunkhash:8].js',
       chunkFilename: 'assets/[name].[chunkhash:8].chunk.js',
       devtoolModuleFilenameTemplate: info =>
         path.relative(app.src, info.absoluteResourcePath).replace(/\\/g, '/'),

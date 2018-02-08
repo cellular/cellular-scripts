@@ -19,7 +19,7 @@ function resolveEnv(value /*: any */, name /*: string */) {
   return value;
 }
 
-function processEnv(rawEnv /*: Object */) {
+function processEnv(rawEnv /*: ?Object */) {
   const env = Object.assign(
     {
       GIT_REV: app.revision,
