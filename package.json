@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest -c test/jest.json",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "prepublishOnly": "npm run lint && npm run test"
   },
   "bin": {
     "cellular-scripts": "./bin/cellular-scripts.js",
