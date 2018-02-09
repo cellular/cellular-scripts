@@ -1,1 +1,1 @@
-require('./Hello');
+import './Hello';

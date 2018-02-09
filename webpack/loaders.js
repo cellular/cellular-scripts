@@ -10,9 +10,9 @@ exports.babel = {
   use: [
     // This loader parallelizes code compilation, it is optional but
     // improves compile time on larger projects
-    require.resolve('thread-loader'),
+    'thread-loader',
     {
-      loader: require.resolve('babel-loader'),
+      loader: 'babel-loader',
       options: {
         cacheDirectory: true,
         highlightCode: true,
@@ -30,13 +30,13 @@ exports.deps = {
   use: [
     // This loader parallelizes code compilation, it is optional but
     // improves compile time on larger projects
-    require.resolve('thread-loader'),
+    'thread-loader',
     {
-      loader: require.resolve('babel-loader'),
+      loader: 'babel-loader',
       options: {
         babelrc: false,
         compact: false,
-        presets: [require.resolve('../babel/deps')],
+        presets: ['babel-preset-cellular/dependencies'],
         cacheDirectory: true,
       },
     },
