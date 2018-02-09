@@ -64,7 +64,7 @@ module.exports = (env /*: ?Object */) => {
       }),
     ],
     devServer: Object.assign({}, devServer, {
-      contentBase: app.dist,
+      contentBase: app.dir('dist'),
       hot: false,
     }),
   });

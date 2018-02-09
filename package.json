@@ -14,7 +14,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest -c test/jest.json",
-    "lint": "eslint .",
+    "lint": "eslint . && flow .",
     "prepublishOnly": "npm run lint && npm run test"
   },
   "bin": {
@@ -22,7 +22,7 @@
     "cs": "./bin/cellular-scripts.js"
   },
   "dependencies": {
-    "about-this-app": "^1.0.0",
+    "about-this-app": "^1.0.2",
     "babel-core": "^6.26.0",
     "babel-jest": "^22.1.0",
     "babel-loader": "^7.1.2",

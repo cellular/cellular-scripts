@@ -6,7 +6,7 @@ const hasBabelConfig = app.hasFile('.babelrc') || app.hasPkgProp('babel');
 
 exports.babel = {
   test: /\.(js|jsx|mjs)$/,
-  include: app.src,
+  include: app.dir('src'),
   use: [
     // This loader parallelizes code compilation, it is optional but
     // improves compile time on larger projects
