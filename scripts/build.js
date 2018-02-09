@@ -1,7 +1,7 @@
 // @flow
 
+const app = require('about-this-app');
 const spawn = require('../lib/spawn');
-const app = require('../lib/app');
 
 module.exports = function() {
   const args = ['--env.prod'];

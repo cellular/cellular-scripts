@@ -1,6 +1,6 @@
 // @flow
 
-const { hasFile, hasPkgProp, src } = require('../lib/app');
+const { hasFile, hasPkgProp, dir } = require('about-this-app');
 
 const useBuiltInBabelConfig = !hasFile('.babelrc') && !hasPkgProp('babel');
 
@@ -12,7 +12,7 @@ const ignores = [
 ];
 
 const config = {
-  roots: [src],
+  roots: [dir('src')],
   //testEnvironment: 'jsdom',
   //collectCoverageFrom: ['src/**/*.js'],
   //testMatch: ['**/__tests__/**/*.js'],

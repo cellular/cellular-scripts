@@ -1,6 +1,6 @@
 // @flow
 
-const { hasFile, hasPkgProp, pkg } = require('./lib/app');
+const { hasFile, hasPkgProp, pkg } = require('about-this-app');
 
 const presets = ['cellular'];
 

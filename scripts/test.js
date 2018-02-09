@@ -1,6 +1,6 @@
 // @flow
 
-const { hasPkgProp, hasFile } = require('../lib/app');
+const { hasPkgProp, hasFile } = require('about-this-app');
 
 module.exports = function(...args /*: string[] */) {
   process.env.BABEL_ENV = 'test';

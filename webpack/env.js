@@ -1,7 +1,12 @@
 // @flow
 
 const _ = require('lodash');
-const app = require('../lib/app');
+const git = require('git-rev-sync');
+const app = require('about-this-app');
+
+const GIT_REV = app.hasFile('.git')
+  ? git.short(app.root)
+  : `snapshot-${Date.now()}`;
 
 const EXPRESSION = Symbol('expression');
 
@@ -20,12 +25,7 @@ function resolveEnv(value /*: any */, name /*: string */) {
 }
 
 function processEnv(rawEnv /*: ?Object */) {
-  const env = Object.assign(
-    {
-      GIT_REV: app.revision,
-    },
-    rawEnv
-  );
+  const env = Object.assign({ GIT_REV }, rawEnv);
 
   if (env.prod) {
     env.NODE_ENV = 'production';

@@ -1,6 +1,6 @@
 // @flow
 
-const app = require('../lib/app');
+const app = require('about-this-app');
 
 const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
 const host = process.env.HOST || '0.0.0.0';
@@ -18,7 +18,7 @@ module.exports = {
   // It will still show compile warnings and errors with this setting.
   clientLogLevel: 'none',
   stats: 'minimal',
-  contentBase: app.static,
+  contentBase: app.dir('static'),
   // By default files from `contentBase` will not trigger a page reload.
   // NOTE: The contentBase itself is set in dev.js/prod.js.
   watchContentBase: true,

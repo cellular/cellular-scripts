@@ -1,6 +1,6 @@
 // @flow
 
-const app = require('../lib/app');
+const app = require('about-this-app');
 
 const hasBabelConfig = app.hasFile('.babelrc') || app.hasPkgProp('babel');
 

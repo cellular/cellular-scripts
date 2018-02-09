@@ -1,12 +1,12 @@
 // @flow
 
 const path = require('path');
+const app = require('about-this-app');
 const webpack = require('webpack');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-const app = require('../lib/app');
 const devServer = require('./devServer');
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
@@ -27,14 +27,16 @@ module.exports = (env /*: ?Object */) => {
       filename: 'assets/[name].[chunkhash:8].js',
       chunkFilename: 'assets/[name].[chunkhash:8].chunk.js',
       devtoolModuleFilenameTemplate: info =>
-        path.relative(app.src, info.absoluteResourcePath).replace(/\\/g, '/'),
+        path
+          .relative(app.dir('src'), info.absoluteResourcePath)
+          .replace(/\\/g, '/'),
     }),
     plugins: [
-      new CleanWebpackPlugin([app.dist], {
+      new CleanWebpackPlugin([app.dir('dist')], {
         root: app.root,
       }),
       ...common.plugins,
-      new CopyWebpackPlugin([{ from: app.static }]),
+      new CopyWebpackPlugin([{ from: app.dir('static') }]),
       new webpack.optimize.ModuleConcatenationPlugin(),
       // Minify the code.
       new webpack.optimize.UglifyJsPlugin({

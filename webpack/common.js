@@ -1,23 +1,23 @@
 // @flow
 
 const path = require('path');
+const app = require('about-this-app');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
-const app = require('../lib/app');
 const { processEnv } = require('./env');
 const { fileContains } = require('../lib/util');
 const loaders = require('./loaders');
 
-const template = `${app.static}/index.html`;
+const template = `${app.dir('static')}/index.html`;
 
 module.exports = function(env /*: ?Object */) {
   const { vars, define } = processEnv(env);
   return {
-    entry: [app.src],
+    entry: [app.dir('src')],
     output: {
-      path: app.dist,
+      path: app.dir('dist'),
       publicPath: '/',
     },
     resolve: {

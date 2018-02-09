@@ -1,6 +1,6 @@
 // @flow
 
-const { hasDep, hasDevDep } = require('./lib/app');
+const { hasDep, hasDevDep } = require('about-this-app');
 
 module.exports = {
   presets: [

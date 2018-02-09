@@ -1,6 +1,6 @@
 // @flow
 
-const app = require('./lib/app');
+const app = require('about-this-app');
 const cellularScripts = require.resolve('./bin/cellular-scripts');
 
 const fix = `${cellularScripts} lint --fix`;

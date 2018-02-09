@@ -1,7 +1,7 @@
 // @flow
 
+const { hasPkgProp, hasFile } = require('about-this-app');
 const spawn = require('../lib/spawn');
-const { hasPkgProp, hasFile } = require('../lib/app');
 
 module.exports = function(...args /*: string[] */) {
   const useBuiltinConfig =
