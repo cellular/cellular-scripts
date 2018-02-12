@@ -1,8 +1,15 @@
+// @flow
+
 const fs = require('fs-extra');
 const path = require('path');
 const chalk = require('chalk');
 
-module.exports = function(appPath, appName, verbose, originalDirectory) {
+module.exports = function(
+  appPath /*: string */,
+  appName /*: string */,
+  verbose /*: ?boolean */,
+  originalDirectory /*: ?string */
+) {
   const appPackage = require(path.join(appPath, 'package.json'));
 
   // Copy over some of the devDependencies

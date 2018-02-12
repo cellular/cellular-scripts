@@ -7,7 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 const { processEnv } = require('./env');
-const { fileContains } = require('../lib/util');
+const { fileContains } = require('./util');
 const loaders = require('./loaders');
 
 const template = `${app.dir('static')}/index.html`;

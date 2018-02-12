@@ -1,6 +1,6 @@
 // @flow
 
-const spawn = require('../lib/spawn');
+const spawn = require('spawn-bin');
 
 module.exports = function(...args /*: string[] */) {
   const app = require('about-this-app');
@@ -13,5 +13,5 @@ module.exports = function(...args /*: string[] */) {
       BABEL_ENV: 'production',
       NODE_ENV: 'production',
     }),
-  });
+  }).status;
 };
