@@ -10,7 +10,7 @@ module.exports = function(
   verbose /*: ?boolean */,
   originalDirectory /*: ?string */
 ) {
-  const appPackage = require(path.join(appPath, 'package.json'));
+  const appPackage = fs.readJsonSync(path.join(appPath, 'package.json'));
 
   // Copy over some of the devDependencies
   appPackage.dependencies = appPackage.dependencies || {};
