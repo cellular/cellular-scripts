@@ -115,23 +115,9 @@ Both values can be overwritten by setting environment variables.
 
 ## Babel
 
-### Default Babel Configuration
+Under the hood [babel-preset-cellular](https://www.npmjs.com/package/babel-preset-cellular) is used to transpile the source code.
 
-Presets:
-* [babel-preset-env](https://www.npmjs.com/package/babel-preset-env)
-* [babel-preset-flow](https://www.npmjs.com/package/babel-preset-flow) (if project has flow-bin as dependency)
-* [babel-preset-react](https://www.npmjs.com/package/babel-preset-react) (if project as react or preact as dependency)
-
-Plugins:
-* [babel-plugin-syntax-dynamic-import](https://www.npmjs.com/package/babel-plugin-syntax-dynamic-import)
-* [babel-plugin-transform-decorators-legacy](https://www.npmjs.com/package/babel-plugin-transform-decorators-legacy)
-* [babel-plugin-transform-class-properties](https://www.npmjs.com/package/babel-plugin-transform-class-properties)
-* [babel-plugin-transform-object-rest-spread](https://www.npmjs.com/package/babel-plugin-transform-object-rest-spread)
-* [babel-plugin-minify-dead-code-elimination](https://www.npmjs.com/package/babel-plugin-minify-dead-code-elimination)
-* [babel-plugin-dynamic-import-node](https://www.npmjs.com/package/babel-plugin-dynamic-import-node) (when tests are run)
-* [babel-plugin-glamorous-displayname](https://www.npmjs.com/package/babel-plugin-glamorous-displayname) (if project has glamorous as dependency)
-
-__NOTE:__ Files under `node_modules` are run through Babel too, but with a much simpler configuration that only applies `babel-preset-env`.
+Files under `node_modules` are run through Babel too, but with a much simpler configuration that only applies `babel-preset-env`.
 
 ### Custom Babel Configuration
 
