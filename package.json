@@ -23,13 +23,13 @@
     "cs": "./bin/cellular-scripts.js"
   },
   "dependencies": {
-    "about-this-app": "^1.0.2",
+    "about-this-app": "^1.1.0",
     "babel-core": "^6.26.0",
     "babel-jest": "^22.1.0",
     "babel-loader": "^7.1.2",
     "babel-preset-cellular": "^1.0.0",
     "case-sensitive-paths-webpack-plugin": "^2.1.1",
-    "cellular-lint": "0.0.1",
+    "cellular-lint": "^1.0.4",
     "chalk": "^2.3.0",
     "clean-webpack-plugin": "^0.1.18",
     "copy-webpack-plugin": "^4.3.1",

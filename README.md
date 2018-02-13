@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/fgnass/cellular-scripts.svg?branch=master)](https://travis-ci.org/fgnass/cellular-scripts)
 [![Greenkeeper badge](https://badges.greenkeeper.io/fgnass/cellular-scripts.svg)](https://greenkeeper.io/)
+[![version](https://img.shields.io/npm/v/cellular-scripts.svg)](http://npm.im/cellular-scripts)
 
 This is a drop-in replacement for react-scripts that allows you to optionally provide custom configurations for webpack, Babel, ESLint, prettier, lint-staged and Jest.
 
@@ -175,12 +176,12 @@ The default configuration is:
 
 ## lint-staged
 
-By default lint-staged will run `cs lint --fix` and optionally `flow focused-check` (if flow-bin is a dependency) followed by `git add` on all staged `.js`, `.mjs` and `.json` files.
+By default lint-staged will run `cs lint --fix` and optionally `flow focused-check` (if flow-bin is a dependency) followed by `git add` on all staged `.js`, `.mjs` and `.jsx` files.
 
 You can override the default configuration by placing a `.lintstagedrc` or `.lint-staged.config.js` file in your project's root or by adding a `lint-staged` property to `package.json`:
 
 ```js
-const defaults = require('cellular-scripts/lintstaged');
+const defaults = require('cellular-lint/lint-staged.config');
 module.exports = Object.assign({}, defaults, {
   // custom config  
 });
