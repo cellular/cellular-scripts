@@ -10,7 +10,11 @@ test('builtin config', () => {
   const manifestPath = path.join(distPath, 'asset-manifest.json');
   process.chdir(appPath);
   fs.removeSync(distPath);
-  const result = spawn.sync(bin, ['build']);
+  const result = spawn.sync(bin, ['build'], {
+    env: Object.assign({}, process.env, {
+      INIT_CWD: appPath,
+    }),
+  });
   expect(result.status).toEqual(0);
   expect(fs.existsSync(manifestPath)).toBeTruthy();
   const mainPath = path.join(distPath, require(manifestPath)['main.js']);
@@ -25,7 +29,11 @@ test('custom config', () => {
   const manifestPath = path.join(distPath, 'asset-manifest.json');
   process.chdir(appPath);
   fs.removeSync(distPath);
-  const result = spawn.sync(bin, ['build']);
+  const result = spawn.sync(bin, ['build'], {
+    env: Object.assign({}, process.env, {
+      INIT_CWD: appPath,
+    }),
+  });
   expect(result.status).toEqual(0);
   expect(fs.existsSync(manifestPath)).toBeTruthy();
   const mainPath = path.join(distPath, require(manifestPath)['main.js']);

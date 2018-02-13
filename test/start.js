@@ -15,6 +15,9 @@ test(
         const child = spawn(bin, ['start', '--port', port], {
           stdio: ['pipe', 'pipe', 'pipe', 'ipc'],
           detached: true,
+          env: Object.assign({}, process.env, {
+            INIT_CWD: appPath,
+          }),
         });
         child.on('error', reject);
         child.stdout.once('data', () => {
