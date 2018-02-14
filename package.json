@@ -40,7 +40,7 @@
     "install-deps-postmerge": "^1.0.2",
     "jest": "^22.1.4",
     "lodash": "^4.17.4",
-    "spawn-bin": "^1.0.0",
+    "spawn-bin": "^2.0.0",
     "thread-loader": "^1.1.2",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1",
