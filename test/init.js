@@ -1,7 +1,8 @@
 const fs = require('fs-extra');
 const path = require('path');
-const spawn = require('cross-spawn');
+const cp = require('child_process');
 
+const node = process.argv[0];
 const bin = require.resolve('../bin/cellular-scripts');
 
 test('init', () => {
@@ -15,7 +16,7 @@ test('init', () => {
     version: '0.0.0',
     dependencies: {},
   });
-  spawn.sync(bin, ['init', appPath, appName]);
+  cp.spawnSync(node, [bin, 'init', appPath, appName]);
   expect(require(pkgPath).scripts.start).toEqual('cs start');
   expect(fs.existsSync(path.join(appPath, 'README.md'))).toBeTruthy();
   fs.removeSync(appPath);

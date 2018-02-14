@@ -1,7 +1,8 @@
 const fs = require('fs-extra');
 const path = require('path');
-const spawn = require('cross-spawn');
+const cp = require('child_process');
 
+const node = process.argv[0];
 const bin = require.resolve('../bin/cellular-scripts');
 
 test('builtin config', () => {
@@ -10,7 +11,7 @@ test('builtin config', () => {
   const manifestPath = path.join(distPath, 'asset-manifest.json');
   process.chdir(appPath);
   fs.removeSync(distPath);
-  const result = spawn.sync(bin, ['build'], {
+  const result = cp.spawnSync(node, [bin, 'build'], {
     env: Object.assign({}, process.env, {
       INIT_CWD: appPath,
     }),
@@ -29,7 +30,7 @@ test('custom config', () => {
   const manifestPath = path.join(distPath, 'asset-manifest.json');
   process.chdir(appPath);
   fs.removeSync(distPath);
-  const result = spawn.sync(bin, ['build'], {
+  const result = cp.spawnSync(node, [bin, 'build'], {
     env: Object.assign({}, process.env, {
       INIT_CWD: appPath,
     }),

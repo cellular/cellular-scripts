@@ -1,8 +1,9 @@
 const path = require('path');
 const portfinder = require('portfinder');
 const request = require('request-promise-native');
-const spawn = require('cross-spawn');
+const cp = require('child_process');
 
+const node = process.argv[0];
 const bin = require.resolve('../bin/cellular-scripts');
 
 test(
@@ -12,7 +13,7 @@ test(
     process.chdir(appPath);
     return portfinder.getPortPromise().then(port => {
       return new Promise((resolve, reject) => {
-        const child = spawn(bin, ['start', '--port', port], {
+        const child = cp.spawn(node, [bin, 'start', '--port', port], {
           stdio: ['pipe', 'pipe', 'pipe', 'ipc'],
           detached: true,
           env: Object.assign({}, process.env, {

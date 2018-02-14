@@ -1,6 +1,8 @@
 const fs = require('fs-extra');
 const path = require('path');
-const spawn = require('cross-spawn');
+const cp = require('child_process');
+
+const node = process.argv[0];
 const bin = require.resolve('../bin/cellular-scripts');
 
 test('build', () => {
@@ -8,7 +10,7 @@ test('build', () => {
   const fixable = path.join(appPath, 'src', 'fixable.js');
   fs.outputFileSync(fixable, ' console.log( "hello world" )');
   process.chdir(appPath);
-  const result = spawn.sync(bin, ['lint', '--fix']);
+  const result = cp.spawnSync(node, [bin, 'lint', '--fix']);
   expect(result.status).toEqual(0);
   const fixed = fs.readFileSync(fixable, 'utf8');
   fs.removeSync(fixable);
