@@ -1,6 +1,6 @@
 {
   "name": "cellular-scripts",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "description": "CLI toolbox for React projects",
   "keywords": [
     "webpack",
