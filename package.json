@@ -9,7 +9,7 @@
     "react-scripts"
   ],
   "author": "Felix Gnass <fgnass@cellular.de>",
-  "repository": "fgnass/cellular-scripts",
+  "repository": "cellular/cellular-scripts",
   "license": "MIT",
   "main": "index.js",
   "scripts": {
