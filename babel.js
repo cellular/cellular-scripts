@@ -5,7 +5,7 @@ const { hasDep, hasDevDep } = require('about-this-app');
 module.exports = {
   presets: [
     [
-      'cellular',
+      require.resolve('babel-preset-cellular'),
       {
         flow: hasDevDep('flow-bin'),
         react: hasDep('react', 'preact'),
