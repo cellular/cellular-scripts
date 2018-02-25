@@ -13,15 +13,18 @@ const ignores = [
 
 const config = {
   roots: [dir('src')],
-  //testEnvironment: 'jsdom',
-  //collectCoverageFrom: ['src/**/*.js'],
-  //testMatch: ['**/__tests__/**/*.js'],
+  collectCoverageFrom: ['src/**/*.{js,jsx,mjs}'],
+  testMatch: [
+    '**/__tests__/**/*.{js,jsx,mjs}',
+    '**/?(*.)(spec|test).{js,jsx,mjs}',
+  ],
   testPathIgnorePatterns: [...ignores],
   coveragePathIgnorePatterns: [...ignores],
-  transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$'],
+  transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$'],
   transform: useBuiltInBabelConfig
     ? {
-        '^.+\\.js$': require.resolve('./babelTransform'),
+        '^.+\\.(js|jsx|mjs)$': require.resolve('./babelTransform'),
+        '^(?!.*\\.(js|jsx|mjs|json)$)': require.resolve('./fileTransform.js'),
       }
     : {},
   coverageThreshold: {

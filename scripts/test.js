@@ -15,17 +15,12 @@ module.exports = function(...args /*: string[] */) {
       ? ['--watch']
       : [];
 
-  // Populate the require cache to allow cellular-scripts to be used as jest preset
-  const jestConfig = require('../jest');
-  const jestPreset = require.resolve('../jest-preset.json');
-  require.cache[jestPreset] = { exports: jestConfig };
-
   const config =
     !args.includes('-c') &&
     !args.includes('--config') &&
     !hasFile('jest.config.js') &&
     !hasPkgProp('jest')
-      ? ['--config', JSON.stringify(jestConfig)]
+      ? ['--config', JSON.stringify(require('../jest'))]
       : [];
 
   require('jest').run(config.concat(watch, args));
