@@ -1,23 +1,26 @@
 // @flow
 
 const app = require('about-this-app');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const hasBabelConfig = app.hasFile('.babelrc') || app.hasPkgProp('babel');
+const presets = hasBabelConfig ? [] : require('../babel').presets;
 
 exports.babel = {
   test: /\.(js|jsx|mjs)$/,
   include: app.dir('src'),
+  exclude: /[/\\]node_modules[/\\]/,
   use: [
     // This loader parallelizes code compilation, it is optional but
     // improves compile time on larger projects
-    'thread-loader',
+    require.resolve('thread-loader'),
     {
-      loader: 'babel-loader',
+      loader: require.resolve('babel-loader'),
       options: {
         cacheDirectory: true,
         highlightCode: true,
         babelrc: hasBabelConfig,
-        presets: hasBabelConfig ? [] : [require.resolve('../babel')],
+        presets,
       },
     },
   ],
@@ -30,17 +33,36 @@ exports.deps = {
   use: [
     // This loader parallelizes code compilation, it is optional but
     // improves compile time on larger projects
-    'thread-loader',
+    require.resolve('thread-loader'),
     {
-      loader: 'babel-loader',
+      loader: require.resolve('babel-loader'),
       options: {
         babelrc: false,
         compact: false,
-        presets: ['babel-preset-cellular/dependencies'],
+        presets: [require.resolve('babel-preset-cellular/dependencies')],
         cacheDirectory: true,
       },
     },
   ],
+};
+
+exports.css = {
+  test: /\.css$/,
+  use: [require.resolve('style-loader'), require.resolve('css-loader')],
+};
+
+exports.extractCss = {
+  test: /\.css$/,
+  use: ExtractTextPlugin.extract({
+    fallback: require.resolve('style-loader'),
+    use: {
+      loader: require.resolve('css-loader'),
+      options: {
+        importLoaders: 1,
+        minimize: true,
+      },
+    },
+  }),
 };
 
 // "file" loader makes sure those assets get served by WebpackDevServer.
@@ -50,10 +72,10 @@ exports.deps = {
 // that fall through the other loaders.
 exports.file = {
   // Exclude `js` files to keep "css" loader working as it injects
-  // it's runtime that would otherwise processed through "file" loader.
+  // it's runtime that would otherwise be processed through "file" loader.
   // Also exclude `html` and `json` extensions so they get processed
   // by webpacks internal loaders.
-  exclude: [/\.js$/, /\.html$/, /\.json$/],
+  exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
   loader: require.resolve('file-loader'),
   options: {
     name: 'assets/[name].[hash:8].[ext]',

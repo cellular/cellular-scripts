@@ -13,6 +13,7 @@ const loaders = require('./loaders');
 const template = `${app.dir('static')}/index.html`;
 
 module.exports = function(env /*: ?Object */) {
+  const isProd = env && env.prod;
   const { vars, define } = processEnv(env);
   return {
     entry: [app.dir('src')],
@@ -42,7 +43,12 @@ module.exports = function(env /*: ?Object */) {
           parser: { requireEnsure: false },
         },
         {
-          oneOf: [loaders.babel, loaders.deps, loaders.file],
+          oneOf: [
+            loaders.babel,
+            loaders.deps,
+            isProd ? loaders.extractCss : loaders.css,
+            loaders.file,
+          ],
         },
       ],
     },
@@ -56,7 +62,7 @@ module.exports = function(env /*: ?Object */) {
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin({
         template,
-        inject: !fileContains(template, /<%=.*\.entry/),
+        inject: !fileContains(template, /<%.*files\.js/),
         env: vars,
         minify: {
           collapseWhitespace: true,

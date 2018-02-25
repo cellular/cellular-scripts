@@ -3,6 +3,7 @@
 const path = require('path');
 const app = require('about-this-app');
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -36,6 +37,7 @@ module.exports = (env /*: ?Object */) => {
         root: app.root,
       }),
       ...common.plugins,
+      new ExtractTextPlugin('assets/[name].[chunkhash:8].css'),
       new CopyWebpackPlugin([{ from: app.dir('static') }]),
       new webpack.optimize.ModuleConcatenationPlugin(),
       // Minify the code.

@@ -1,6 +1,6 @@
 <%
 const {
-  files: { chunks },
+  files,
   options: { env }
 } = htmlWebpackPlugin;
 %>
@@ -13,7 +13,9 @@ const {
   <!-- ☉ CELLULAR https:://www.cellular.de -->
 
   <link rel="shortcut icon" type="image/x-icon" title="" href="/favicon.ico" />
-
+  <% for (let file of files.css) { %>
+  <link rel="stylesheet" href="<%= file %>" />
+  <% } %>
   <style type="text/css">
     html, body {
       height: 100%;
@@ -21,7 +23,7 @@ const {
       padding: 0;
     }
     body {
-      font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+      font-family: sans-serif;
       font-size: 14px;
     }
   </style>
@@ -37,8 +39,8 @@ const {
 </head>
 <body>
   <div id="root"></div>
-  <% for (var chunk in chunks) { %>
-  <script src="<%= chunks[chunk].entry %>"></script>
+  <% for (let file of files.js) { %>
+  <script src="<%= file %>"></script>
   <% } %>
 </body>
 </html>
