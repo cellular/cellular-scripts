@@ -69,14 +69,16 @@ The directory layout can be customized via your project's package.json:
     "directories": {
         "src": "src",
         "dist": "dist",
-        "static": "static"
+        "static": "static",
+        "template": "static"
     }
 }
 ```
 
 * `src` where the source files are located. `src/index.js` is the default webpack entry.
 * `dist` where webpack will place the output of production builds.
-* `static` files that will be copied to `dist` verbatim. `static/index.html` gets processed by the [html-webpack-plugin](https://webpack.js.org/plugins/html-webpack-plugin/).
+* `static` files that will be [copied](https://www.npmjs.com/package/copy-webpack-plugin) to `dist` verbatim.
+* `template` directory containing an `index.html` that will be processed by the [html-webpack-plugin](https://webpack.js.org/plugins/html-webpack-plugin/).
 
 ## Webpack
 
