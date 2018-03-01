@@ -13,6 +13,9 @@ const devServer = require('./devServer');
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 
+const assetNamePattern =
+  process.env.ASSET_NAME_PATTERN || 'assets/[name].[chunkhash:8]';
+
 // This is the production configuration.
 // It compiles slowly and is focused on producing a fast and minimal bundle.
 // The development configuration is different and lives in a separate file.
@@ -25,8 +28,8 @@ module.exports = (env /*: ?Object */) => {
     // You can exclude the *.map files from the build during deployment.
     devtool: shouldUseSourceMap ? 'source-map' : false,
     output: Object.assign({}, common.output, {
-      filename: 'assets/[name].[chunkhash:8].js',
-      chunkFilename: 'assets/[name].[chunkhash:8].chunk.js',
+      filename: `${assetNamePattern}.js`,
+      chunkFilename: `${assetNamePattern}.chunk.js`,
       devtoolModuleFilenameTemplate: info =>
         path
           .relative(app.dir('src'), info.absoluteResourcePath)
@@ -37,7 +40,7 @@ module.exports = (env /*: ?Object */) => {
         root: app.root,
       }),
       ...common.plugins,
-      new ExtractTextPlugin('assets/[name].[chunkhash:8].css'),
+      new ExtractTextPlugin(`${assetNamePattern}.css`),
       new CopyWebpackPlugin([{ from: app.dir('static') }]),
       new webpack.optimize.ModuleConcatenationPlugin(),
       // Minify the code.
