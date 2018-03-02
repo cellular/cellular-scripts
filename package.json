@@ -14,9 +14,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest -c test/jest.json",
-    "lint": "cellular-lint && flow .",
+    "lint": "cellular-lint && flow check",
     "precommit": "cellular-lint-staged",
-    "prepublishOnly": "npm run lint && npm run test"
+    "prepublishOnly": "npm run lint && npm test"
   },
   "bin": {
     "cellular-scripts": "./bin/cellular-scripts.js",
