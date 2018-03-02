@@ -13,8 +13,14 @@ const loaders = require('./loaders');
 const templateDirProp = app.dirs.template ? 'template' : 'static';
 const template = `${app.dir(templateDirProp)}/index.html`;
 
-module.exports = function(env /*: ?Object */) {
-  const isProd = env && env.prod;
+const opts = app.pkg['cellular-scripts'] || {};
+
+let inject = opts.inject;
+if (inject === undefined || inject == 'auto')
+  inject = !fileContains(template, /<%.*files\.js/);
+
+module.exports = function(env /*: ?Object */, argv /*: Object */) {
+  const isProd = argv.mode == 'production';
   const { vars, define } = processEnv(env);
   return {
     entry: [app.dir('src')],
@@ -63,7 +69,7 @@ module.exports = function(env /*: ?Object */) {
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin({
         template,
-        inject: !fileContains(template, /<%.*files\.js/),
+        inject,
         env: vars,
         minify: {
           collapseWhitespace: true,

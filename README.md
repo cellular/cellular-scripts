@@ -89,27 +89,23 @@ You can modify the default configuration like this:
 ```js
 const webpackConfig = require('cellular-scripts/webpack');
 
-module.exports = function(env) {
-    const config = webpackConfig(env);
+module.exports = function(env, argv) {
+    const config = webpackConfig(env, argv);
     // modify default config and return it
     return config;
 }
 ```
 
-The passed in `env` is either `{prod: true}` or `{dev: true}` depending on the script that was used (build or start).
-
-Make sure to pass this information on to the `webpackConfig` function.
-
 You can pass additional environment entries
 which will be exposed via the webpack [DefinePlugin](https://webpack.js.org/plugins/define-plugin/):
 
 ```js
-module.exports = function(env) {
+module.exports = function(env, argv) {
     return webpackConfig({
         ...env,
         FOO: null, // will be set to process.env.FOO
         BAR: 'bar', // defaults to 'bar'
-    });
+    }, argv);
 });
 ```
 
@@ -141,9 +137,7 @@ The presence of such a file will also allow IDEs to pick up your configuration, 
 
 ```js
 module.exports = {
-  extends: [
-    require.resolve('cellular-scripts/eslint')
-  ]
+  extends: ['cellular']
 };
 ```
 

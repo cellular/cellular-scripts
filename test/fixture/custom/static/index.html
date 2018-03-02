@@ -1,14 +1,14 @@
 <%
 const {
-  files: { chunks },
+  files,
   options: { env }
 } = htmlWebpackPlugin;
 %>
 <html>
 <head>
-  <% for (var chunk in chunks) { %>
-  <script src="<%= chunks[chunk].entry %>"></script>
-  <% } %>        
+  <% for (let file of files.js) { %>
+  <script src="<%= file %>"></script>
+  <% } %>
 </head>
 <body>
   <div id="root"></div>

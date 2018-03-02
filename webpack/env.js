@@ -26,11 +26,6 @@ function resolveEnv(value /*: any */, name /*: string */) {
 
 function processEnv(rawEnv /*: ?Object */) {
   const env = Object.assign({ GIT_REV }, rawEnv);
-
-  if (env.prod) {
-    env.NODE_ENV = 'production';
-  }
-
   return {
     vars: _.mapValues(env, resolveEnv),
     define: {

@@ -2,7 +2,7 @@
 
 const path = require('path');
 const app = require('about-this-app');
-const webpack = require('webpack');
+
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -10,17 +10,17 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const devServer = require('./devServer');
 
-// Source maps are resource heavy and can cause out of memory issue for large source files.
-const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
+const opts = app.pkg['cellular-scripts'] || {};
 
-const assetNamePattern =
-  process.env.ASSET_NAME_PATTERN || 'assets/[name].[chunkhash:8]';
+// Source maps are resource heavy and can cause out of memory issue for large source files.
+const shouldUseSourceMap = opts.generateSourceMap !== false;
+const assetNamePattern = opts.assetNamePattern || 'assets/[name].[chunkhash:8]';
 
 // This is the production configuration.
 // It compiles slowly and is focused on producing a fast and minimal bundle.
 // The development configuration is different and lives in a separate file.
-module.exports = (env /*: ?Object */) => {
-  const common = require('./common')(env);
+module.exports = (env /*: ?Object */, argv /*: Object */) => {
+  const common = require('./common')(env, argv);
   return Object.assign({}, common, {
     // Don't attempt to continue if there are any errors.
     bail: true,
@@ -42,25 +42,6 @@ module.exports = (env /*: ?Object */) => {
       ...common.plugins,
       new ExtractTextPlugin(`${assetNamePattern}.css`),
       new CopyWebpackPlugin([{ from: app.dir('static') }]),
-      new webpack.optimize.ModuleConcatenationPlugin(),
-      // Minify the code.
-      new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false,
-          // Disabled because of an issue with Uglify breaking seemingly valid code:
-          // https://github.com/facebookincubator/create-react-app/issues/2376
-          // Pending further investigation:
-          // https://github.com/mishoo/UglifyJS2/issues/2011
-          comparisons: false,
-        },
-        output: {
-          comments: false,
-          // Turned on because emoji and regex is not minified properly using default
-          // https://github.com/facebookincubator/create-react-app/issues/2488
-          ascii_only: true,
-        },
-        sourceMap: shouldUseSourceMap,
-      }),
       // Generate a manifest file which contains a mapping of all asset filenames
       // to their corresponding output file so that tools can pick it up without
       // having to parse `index.html`.
