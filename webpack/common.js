@@ -10,7 +10,8 @@ const { processEnv } = require('./env');
 const { fileContains } = require('./util');
 const loaders = require('./loaders');
 
-const template = `${app.dir('static')}/index.html`;
+const templateDirProp = app.dirs.template ? 'template' : 'static';
+const template = `${app.dir(templateDirProp)}/index.html`;
 
 module.exports = function(env /*: ?Object */) {
   const isProd = env && env.prod;
