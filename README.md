@@ -1,3 +1,9 @@
+# DEPRECATED ⚠️
+
+This package is no longer maintained. Please use `npx create-react-app my-app --typescript` instead.
+
+---
+
 [![Build Status](https://travis-ci.org/cellular/cellular-scripts.svg?branch=master)](https://travis-ci.org/cellular/cellular-scripts)
 [![Greenkeeper badge](https://badges.greenkeeper.io/cellular/cellular-scripts.svg)](https://greenkeeper.io/)
 [![version](https://img.shields.io/npm/v/cellular-scripts.svg)](http://npm.im/cellular-scripts)
