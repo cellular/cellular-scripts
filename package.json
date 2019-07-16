@@ -29,7 +29,7 @@
     "babel-loader": "^7.1.2",
     "babel-preset-cellular": "^1.1.0",
     "case-sensitive-paths-webpack-plugin": "^2.1.1",
-    "cellular-lint": "^1.0.6",
+    "cellular-lint": "^2.0.1",
     "chalk": "^2.3.0",
     "clean-webpack-plugin": "^0.1.18",
     "copy-webpack-plugin": "^4.3.1",
