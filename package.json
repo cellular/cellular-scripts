@@ -51,7 +51,7 @@
   },
   "devDependencies": {
     "flow-bin": "^0.67.1",
-    "portfinder": "^1.0.13",
+    "portfinder": "^1.0.25",
     "request-promise-native": "^1.0.5"
   }
 }
